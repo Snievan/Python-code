@@ -114,9 +114,6 @@ in ascii code int -> char is chr dict, ord for contrast
 
 #  2. Web Scraping
 Here introduce `Taland`, a powerful extension of Chorm. You can use `Taland` to test API and params before your coding work get started.
-## Ajax Data
-
-## Download Data
 
 # 3. Date & Time
 
