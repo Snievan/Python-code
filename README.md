@@ -5,14 +5,13 @@
   - [OS, SYS](#os-sys)
     - [Mute Warnings](#mute-warnings)
     - [get_path_for_file](#get_path_for_file)
+    - [Unzip Files](#unzip-files)
   - [MS Office](#ms-office)
     - [pywin32](#pywin32)
   - [String](#string)
     - [decoding](#decoding)
     - [ord,chr](#ordchr)
 - [2. Web Scraping](#2-web-scraping)
-  - [Ajax Data](#ajax-data)
-  - [Download Data](#download-data)
 - [3. Date & Time](#3-date--time)
   - [Get Timestamp](#get-timestamp)
   - [Conver Time Zone in pd](#conver-time-zone-in-pd)
@@ -82,7 +81,21 @@ os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 os.path.join (a,b,c)
 ```
 
+### Unzip Files
+```PYTHON
+import zipfile
+path_to_zip_file = r'../PHM原型系统.rar'
+directory_to_extract_to = r'../'
+with zipfile.ZipFile(path_to_zip_file, 'r') as zip_ref:
+    zip_ref.extractall(directory_to_extract_to)
+```
+
+
 ## MS Office
+
+### pywin32 
+
+1. Open excel, get cell value
 ```python
 from win32com import client
 excel = client.Dispatch("Excel.Application")
@@ -98,7 +111,42 @@ col = ws.usedrange.columns.count
 data = ws.Range(ws.Cells(1,1),ws.Cells(row,col)).value
 ```
 
-### pywin32
+2. Add hyper link 
+
+```PYTHON
+import os
+
+from win32com import client
+excel = client.Dispatch("Excel.Application")
+excel.Visible = True
+excel.DisplayAlerts = False
+
+file_path_abs =  r'file_absoulte_path.xlsx'
+
+wb = excel.Workbooks.Open(file_path_abs) 
+for ws in  wb.Worksheets:
+    print(ws.name)
+cells_left = [wb.Worksheets("数据源").Cells(i+3,4) for i in range(61)]
+len(cells_left)
+
+cells_right = [wb.Worksheets("ODS字段").Cells(i+2,1) for i in range(1500) if wb.Worksheets("ODS字段").Cells(i+2,1).value]
+len(cells_right)
+for i,(l,r) in enumerate(zip(cells_left,cells_right)):
+    print(i, l.value, r.value,l.value == r.value, r.row)
+for i,(l,r) in enumerate(zip(cells_left,cells_right)):
+    wb.Worksheets("数据源").Hyperlinks.Add(Anchor = l,
+                                    Address = "",
+                                     SubAddress = "ODS字段!A"+str(r.row) ,
+                                    TextToDisplay = "")
+    
+    wb.Worksheets("ODS字段").Hyperlinks.Add(Anchor = r,
+                                    Address = "",
+                                     SubAddress = "数据源!D"+str(l.row) ,
+                                    TextToDisplay = "")
+```
+
+
+
 
 ## String
 ### decoding 
