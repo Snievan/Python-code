@@ -6,6 +6,7 @@
     - [Mute Warnings](#mute-warnings)
     - [get_path_for_file](#get_path_for_file)
     - [Unzip Files](#unzip-files)
+    - [os.walk](#oswalk)
   - [MS Office](#ms-office)
     - [pywin32](#pywin32)
   - [String](#string)
@@ -60,6 +61,8 @@
     - [array, key relevant](#array-key-relevant)
   - [mysql](#mysql)
 
+last update on 2021/5/10
+
 # 0. Install
 ## PIP install with image site
 in cmd mode
@@ -90,6 +93,15 @@ with zipfile.ZipFile(path_to_zip_file, 'r') as zip_ref:
     zip_ref.extractall(directory_to_extract_to)
 ```
 
+### os.walk 
+```PYTHON
+import os
+for root, dirs, files in os.walk(".", topdown=False):
+    for name in files:
+        print(os.path.join(root, name))
+    for name in dirs:
+        print(os.path.join(root, name))
+```
 
 ## MS Office
 
