@@ -14,6 +14,7 @@
     - [ord,chr](#ordchr)
 - [2. Web Scraping](#2-web-scraping)
 - [3. Date & Time](#3-date--time)
+  - [pandas dt](#pandas-dt)
   - [Get Timestamp](#get-timestamp)
   - [Conver Time Zone in pd](#conver-time-zone-in-pd)
   - [time, datetime module](#time-datetime-module)
@@ -176,6 +177,14 @@ in ascii code int -> char is chr dict, ord for contrast
 Here introduce `Taland`, a powerful extension of Chorm. You can use `Taland` to test API and params before your coding work get started.
 
 # 3. Date & Time
+
+## pandas dt
+```
+# get unixtime, date 
+pd.Timestamp('2021-04-01 00:02:35.234').timestamp()
+
+pd.to_datetime('2019-01-15 13:30:00')
+```
 
 ## Get Timestamp
 ```python
