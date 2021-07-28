@@ -14,8 +14,12 @@
     - [ord,chr](#ordchr)
 - [2. Web Scraping](#2-web-scraping)
 - [3. Date & Time](#3-date--time)
+<<<<<<< HEAD
   - [pandas group by time](#pandas-group-by-time)
   - [pandas dt unixtime convert](#pandas-dt-unixtime-convert)
+=======
+  - [pandas dt](#pandas-dt)
+>>>>>>> 8ef8eebad7f4c022f844f10d1cfebe4233a61840
   - [Get Timestamp](#get-timestamp)
   - [Conver Time Zone in pd](#conver-time-zone-in-pd)
   - [time, datetime module](#time-datetime-module)
@@ -179,6 +183,7 @@ Here introduce `Taland`, a powerful extension of Chorm. You can use `Taland` to 
 
 # 3. Date & Time
 
+<<<<<<< HEAD
 ## pandas group by time 
 ```python
 import pandas as pd
@@ -197,6 +202,9 @@ df = df.groupby(pd.TimeGrouper('5Min')).agg({
 ```
 
 ## pandas dt unixtime convert
+=======
+## pandas dt
+>>>>>>> 8ef8eebad7f4c022f844f10d1cfebe4233a61840
 ```
 # get unixtime, date 
 pd.Timestamp('2021-04-01 00:02:35.234').timestamp()
