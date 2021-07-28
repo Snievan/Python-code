@@ -14,6 +14,8 @@
     - [ord,chr](#ordchr)
 - [2. Web Scraping](#2-web-scraping)
 - [3. Date & Time](#3-date--time)
+  - [pandas group by time](#pandas-group-by-time)
+  - [pandas dt unixtime convert](#pandas-dt-unixtime-convert)
   - [Get Timestamp](#get-timestamp)
   - [Conver Time Zone in pd](#conver-time-zone-in-pd)
   - [time, datetime module](#time-datetime-module)
@@ -176,6 +178,31 @@ in ascii code int -> char is chr dict, ord for contrast
 Here introduce `Taland`, a powerful extension of Chorm. You can use `Taland` to test API and params before your coding work get started.
 
 # 3. Date & Time
+
+## pandas group by time 
+```python
+import pandas as pd
+
+df = pd.DataFrame("Your data provided above")
+df["DATE"] = pd.to_datetime(df["DATE"])
+df.set_index("DATE", inplace=True)
+
+df = df.groupby(pd.TimeGrouper('5Min')).agg({
+                                        "OPEN":  "first",
+                                        "HIGH":  "max",
+                                        "LOW":   "min",
+                                        "CLOSE": "last",
+                                        "VOLUME": "sum"
+                                    })
+```
+
+## pandas dt unixtime convert
+```
+# get unixtime, date 
+pd.Timestamp('2021-04-01 00:02:35.234').timestamp()
+
+pd.to_datetime('2019-01-15 13:30:00')
+```
 
 ## Get Timestamp
 ```python
