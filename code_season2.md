@@ -5,6 +5,7 @@
 - [Time convert](#time-convert)
   - [pd.time to unix](#pdtime-to-unix)
   - [pd.time grouper](#pdtime-grouper)
+- [csv](#csv)
 - [git](#git)
   - [PUSHING CHANGES](#pushing-changes)
   - [CREATE A BRANCH FOR DESIRED FEATRUE](#create-a-branch-for-desired-featrue)
@@ -28,16 +29,30 @@
 # sys
 - sys.getsizeof()
 
-# Time convert
-## pd.time to unix
+# Time relate
+## pd: ymd to unix
 ```python
 pd.Timestamp('2021-04-01 00:02:35.234').timestamp()
+```
+
+## pd: unix to ymd
+```python
+df5['ymd'] = pd.to_datetime(df5['time'].values, unit = 'ms', utc= True).tz_convert("Asia/Shanghai")
 ```
 
 
 ## pd.time grouper
 ```python
 df.groupby(pd.Grouper(key="Publish date", freq="1W")).mean()
+```
+
+# csv 
+```python
+def write_log(log_data: list, file_path: str = './ae_model.csv'):
+    'Write log data to local csv file'
+    with open(file_path, 'a',newline='') as f:
+        csv_writer = csv.writer(f)
+        csv_writer.writerow(log_data)
 ```
 
 # git
