@@ -1,0 +1,35 @@
+{
+    "comsumer_ip": [
+        "phm-kafka-01:12000",
+        "phm-kafka-02:12000",
+        "phm-kafka-03:12000",
+        "phm-kafka-04:12000",
+        "phm-kafka-05:12000",
+        "phm-kafka-06:12000",
+        "phm-kafka-07:12000"
+    ],
+    "comsumer_topic": "phmmodel-CR400AF",
+    "comsumer_group": "Air_conditioning_warning_CR400AF_06",
+    "consumer_pos": "latest",
+    "producer_ip": [
+        "phm-kafka-01:12000",
+        "phm-kafka-02:12000",
+        "phm-kafka-03:12000",
+        "phm-kafka-04:12000",
+        "phm-kafka-05:12000",
+        "phm-kafka-06:12000",
+        "phm-kafka-07:12000"
+    ],
+    "producer_clientid": "demo",
+    "producer_topic": "phm-result-test",
+    "producer_async": true,
+    "threadcount": 4,
+    "max_poll_records": 3000,
+    "batchtime": 1000,
+    "ModelRun": "phmmodel.modeldemo.test.TestRun",
+    "api_version": [
+        0,
+        10,
+        1
+    ]
+}
